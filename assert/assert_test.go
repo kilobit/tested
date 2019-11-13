@@ -1,6 +1,6 @@
 /* Copyright 2019 Kilobit Labs Inc. */
 
-package tested // import "kilobit.ca/go/tested"
+package assert // import "kilobit.ca/go/tested/assert"
 
 import "testing"
 
