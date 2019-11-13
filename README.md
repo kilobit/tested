@@ -29,7 +29,17 @@ your project.
 Features
 --------
 
+Right now, tested couldn't be simpler while being any use at all.
+
+Current Features:
+
 - A simple Assert library to reduce test writing effort.
+- Implemented the Expect assertion.
+
+Future Features:
+- More assert functions.
+- Customize and direct output.
+- Whatever seems useful while writing tests.
 
 See Other
 ---------
