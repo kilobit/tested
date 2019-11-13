@@ -44,7 +44,7 @@ Future Features:
 See Other
 ---------
 
-There are lot's of great testing libraries that may better *suite* your
+There are lots of great testing libraries that may better *suite* your
 needs.
 
 - [Testify](https://github.com/stretchr/testify)
