@@ -3,8 +3,10 @@
 package assert // import "kilobit.ca/go/tested/assert"
 
 import "testing"
-import "reflect"
+import "fmt"
 
+// Simple shallow comparison of expected and actual values.
+//
 func Expect(t *testing.T, expected interface{}, actual interface{}) {
 
 	if expected != actual {
@@ -12,9 +14,16 @@ func Expect(t *testing.T, expected interface{}, actual interface{}) {
 	}
 }
 
+// Uses the string '%#v' representation for matching as there are
+// issues matching with reflect.DeepEqual returning false negatives.
+//
 func ExpectDeep(t *testing.T, expected interface{}, actual interface{}) {
 
-	if ! reflect.DeepEqual(expected, actual) {
+	exps := fmt.Sprintf("%#v", expected)
+	acts := fmt.Sprintf("%#v", actual)
+
+	if exps != acts {
 		t.Errorf("Expected %v, Got %v", expected, actual)
 	}
 }
+
