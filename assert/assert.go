@@ -23,7 +23,7 @@ func ExpectDeep(t *testing.T, expected interface{}, actual interface{}) {
 	acts := fmt.Sprintf("%#v", actual)
 
 	if exps != acts {
-		t.Errorf("Expected %v, Got %v", expected, actual)
+		t.Errorf("Expected %#v, Got %#v", expected, actual)
 	}
 }
 
