@@ -1,8 +1,9 @@
 /* Copyright 2019 Kilobit Labs Inc. */
 
-package assert // import "kilobit.ca/go/tested/assert"
+package assert_test
 
 import "testing"
+import . "kilobit.ca/go/tested/assert"
 
 func TestAssertTest(t *testing.T) {
 
@@ -23,4 +24,10 @@ func TestExpectDeepNested(t *testing.T) {
 	act := map[string]interface{}{"foo": 1, "bar": map[string]bool{"nested": true}}
 
 	ExpectDeep(t, exp, act)
+}
+
+func TestOk(t *testing.T) {
+
+	var err error = nil
+	Ok(t, err)
 }
