@@ -3,6 +3,7 @@
 package assert_test
 
 import "testing"
+import "errors"
 import . "kilobit.ca/go/tested/assert"
 
 func TestAssertTest(t *testing.T) {
@@ -29,5 +30,13 @@ func TestExpectDeepNested(t *testing.T) {
 func TestOk(t *testing.T) {
 
 	var err error = nil
+	Ok(t, err)
+}
+
+func TestNotOk(t *testing.T) {
+
+	t.Skip("Normally disabled as a meta-test.")
+
+	var err error = errors.New("Test Error.")
 	Ok(t, err)
 }

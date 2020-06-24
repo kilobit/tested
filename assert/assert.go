@@ -4,6 +4,7 @@ package assert // import "kilobit.ca/go/tested/assert"
 
 import "testing"
 import "fmt"
+import "runtime"
 
 // Simple shallow comparison of expected and actual values.
 //
@@ -34,6 +35,8 @@ func ExpectDeep(tb testing.TB, expected interface{}, actual interface{}) {
 func Ok(tb testing.TB, err error) {
 
 	if err != nil {
-		tb.Errorf("Unexpected error: %s", err)
+		_, file, line, _ := runtime.Caller(1)
+		fmt.Printf("\033[31m%s:%d: Unexpected error: %s\033[39m\n\n", file, line, err)
+		tb.FailNow()
 	}
 }
