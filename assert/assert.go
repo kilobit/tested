@@ -5,13 +5,17 @@ package assert // import "kilobit.ca/go/tested/assert"
 import "testing"
 import "fmt"
 import "runtime"
+import fp "path/filepath"
 
 // Simple shallow comparison of expected and actual values.
 //
 func Expect(tb testing.TB, expected interface{}, actual interface{}) {
 
 	if expected != actual {
-		tb.Errorf("Expected %v, Got %v", expected, actual)
+		_, file, line, _ := runtime.Caller(1)
+		fmt.Printf("\033[31m%s:%d: Expected %v, Got %v\033[39m\n\n",
+			fp.Base(file), line, expected, actual)
+		tb.FailNow()
 	}
 }
 
@@ -24,7 +28,10 @@ func ExpectDeep(tb testing.TB, expected interface{}, actual interface{}) {
 	acts := fmt.Sprintf("%#v", actual)
 
 	if exps != acts {
-		tb.Errorf("Expected %#v, Got %#v", expected, actual)
+		_, file, line, _ := runtime.Caller(1)
+		fmt.Printf("\033[31m%s:%d:\nExpected:\n\t%#v\nGot:\n\t%#v\033[39m\n\n",
+			fp.Base(file), line, expected, actual)
+		tb.FailNow()
 	}
 }
 
@@ -36,7 +43,8 @@ func Ok(tb testing.TB, err error) {
 
 	if err != nil {
 		_, file, line, _ := runtime.Caller(1)
-		fmt.Printf("\033[31m%s:%d: Unexpected error: %s\033[39m\n\n", file, line, err)
+		fmt.Printf("\033[31m%s:%d: Unexpected error\n\n%s\033[39m\n\n",
+			fp.Base(file), line, err)
 		tb.FailNow()
 	}
 }

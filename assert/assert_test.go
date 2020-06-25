@@ -11,10 +11,27 @@ func TestAssertTest(t *testing.T) {
 	Expect(t, true, true)
 }
 
+func TestAssertFailTest(t *testing.T) {
+
+	t.Skip("Normally disabled as a meta-test.")
+
+	Expect(t, true, false)
+}
+
 func TestExpectDeep(t *testing.T) {
 
 	exp := map[string]int{"foo": 1, "bar": 42}
 	act := map[string]int{"foo": 1, "bar": 42}
+
+	ExpectDeep(t, exp, act)
+}
+
+func TestExpectDeepFail(t *testing.T) {
+
+	t.Skip("Normally disabled as a meta-test.")
+
+	exp := map[string]int{"foo": 1, "bar": 42}
+	act := map[string]int{"foo": 1, "bar": 43}
 
 	ExpectDeep(t, exp, act)
 }
