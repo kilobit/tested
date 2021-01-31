@@ -1,4 +1,4 @@
-/* Copyright 2019 Kilobit Labs Inc. */
+/* Copyright 2021 Kilobit Labs Inc. */
 
 package assert_test
 
@@ -15,7 +15,7 @@ func TestAssertFailTest(t *testing.T) {
 
 	t.Skip("Normally disabled as a meta-test.")
 
-	Expect(t, true, false)
+	Expect(t, true, false, "This test is normally skipped.")
 }
 
 func TestExpectDeep(t *testing.T) {
@@ -33,7 +33,7 @@ func TestExpectDeepFail(t *testing.T) {
 	exp := map[string]int{"foo": 1, "bar": 42}
 	act := map[string]int{"foo": 1, "bar": 43}
 
-	ExpectDeep(t, exp, act)
+	ExpectDeep(t, exp, act, "This test is normally skipped.")
 }
 
 func TestExpectDeepNested(t *testing.T) {
@@ -47,7 +47,7 @@ func TestExpectDeepNested(t *testing.T) {
 func TestOk(t *testing.T) {
 
 	var err error = nil
-	Ok(t, err)
+	Ok(t, err, "Won't be printed.")
 }
 
 func TestNotOk(t *testing.T) {
@@ -55,5 +55,5 @@ func TestNotOk(t *testing.T) {
 	t.Skip("Normally disabled as a meta-test.")
 
 	var err error = errors.New("Test Error.")
-	Ok(t, err)
+	Ok(t, err, "This test is normally skipped.")
 }
