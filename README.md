@@ -35,6 +35,9 @@ Current Features:
 
 - A simple Assert library to reduce test writing effort.
 - Implemented the Expect assertion.
+- Added simple error check assertion, *assert.Ok*.
+- Pass arbitrary extra arguments that will be stringified and printed
+  if the assertion fails.
 
 Future Features:
 - More assert functions.

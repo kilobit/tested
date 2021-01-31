@@ -1,5 +1,10 @@
 /* Copyright 2019 Kilobit Labs Inc. */
 
+// Standard assertions.
+//
+// Assertions accept additional arguments that will be stringified and
+// printed in the event the assertion fails.
+//
 package assert // import "kilobit.ca/go/tested/assert"
 
 import "testing"
